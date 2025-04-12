@@ -1,4 +1,4 @@
-# Hangfire.PostgreSql
+﻿# Hangfire.PostgreSql
 
 [![Build status](https://github.com/hangfire-postgres/Hangfire.PostgreSql/actions/workflows/pack.yml/badge.svg)](https://github.com/hangfire-postgres/Hangfire.PostgreSql/actions/workflows/pack.yml) [![GitHub release (latest by date)](https://img.shields.io/github/v/release/hangfire-postgres/Hangfire.PostgreSql?label=Release)](https://github.com/hangfire-postgres/Hangfire.PostgreSql/releases/latest) [![Nuget](https://img.shields.io/nuget/v/Hangfire.PostgreSql?label=NuGet)](https://www.nuget.org/packages/Hangfire.PostgreSql)
 
@@ -81,6 +81,17 @@ app.UseHangfireServer(options);
 ```
 
 this provider would first process jobs in `a-long-running-queue`, then `general-queue` and lastly `very-fast-queue`.
+
+### Running Unit Tests
+
+In order to run unit tests you need to setup a postgresql database. Simples way to do that is to use docker;
+
+Environment configurations:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_HOST_AUTH_METHOD: trust
+ports:
+          - 5432:5432
+
 
 ### License
 
