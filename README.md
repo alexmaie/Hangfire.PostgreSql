@@ -50,6 +50,20 @@ And... That's it. You are ready to go.
 
 If you encounter any issues/bugs or have idea of a feature regarding Hangfire.Postgresql, [create us an issue](https://github.com/hangfire-postgres/Hangfire.PostgreSql/issues/new). Thanks!
 
+### Connecting to Azure Postgres Flexible Servers
+
+To connect to Azure PostgreSQL Flexible Servers, use need to use
+
+```csharp
+services.AddHangfire(config =>
+    config.UseAzurePostgreSqlStorage(c => Configuration.GetConnectionString("HangfireConnection"))
+    );
+```
+
+This factory generates a data source builder which behind the scenes configured a periodic password provider. 
+This provider will use DefaultAzureCredential to fetch a token depending on the environment.
+If you need to customize the behavior, use the dataSourceBuilderSetup override. That one is called after the internal configuration.  
+
 ### Enabling SSL support
 
 SSL support can be enabled for Hangfire.PostgreSql library using the following mechanism:
